@@ -26,3 +26,16 @@ broker and followers brokers are used for 'in-sync' replica of the messages to p
 5. Start the Kafka-server. Below cmd will start the kafka server on localhost://9092 
 
    PS C:\kafka> .\bin\windows\kafka-server-start.bat .\config\kraft\server.properties
+
+6. Graceful shutdown of the kafka server. (CTRL + C command will stop the server forcefully. It is recommended to stop the server gracefully.)
+
+   PS C:\kafka> .\bin\windows\kafka-server-stop.bat
+
+7. Create the topic using CLI. The topic "topic_one" is created and registered to bootstrap server / Kafka server "localhost:9092".
+
+   PS C:\kafka>  .\bin\windows\kafka-topics.bat --create --topic topic_one --bootstrap-server localhost:9092
+
+8. See the list of topics registered to kafka server (localhost:9092). "--list" will list all the topics. "--describe" provides more details about the topic.
+
+   PS C:\kafka> .\bin\windows\kafka-topics.bat --list --bootstrap-server localhost:9092
+   PS C:\kafka> .\bin\windows\kafka-topics.bat --describe --bootstrap-server localhost:9092
