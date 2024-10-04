@@ -39,3 +39,24 @@ broker and followers brokers are used for 'in-sync' replica of the messages to p
 
    PS C:\kafka> .\bin\windows\kafka-topics.bat --list --bootstrap-server localhost:9092
    PS C:\kafka> .\bin\windows\kafka-topics.bat --describe --bootstrap-server localhost:9092
+
+9. To delete the topic from kafka server
+
+   PS C:\kafka> .\bin\windows\kafka-topics.bat --delete --topic topic_one --bootstrap-server localhost:9092
+
+10. Create the producer to send the message to the topic.
+   (without Key)
+   PS C:\kafka> .\bin\windows\kafka-console-producer.bat --bootstrap-server localhost:9092 --topic topic_one
+
+    (with Key - Here mentioned parse.key=true and key-separator as : )
+    PS C:\kafka> .\bin\windows\kafka-console-producer.bat --bootstrap-server localhost:9092 --topic topic_one --property "parse.key=true" --property "key.separator=:"
+
+11. Kafka consumer to read the message on the topic. 
+
+   (Reading the message from topic)
+   PS C:\kafka> .\bin\windows\kafka-console-consumer.bat --topic topic_one --from-beginning --bootstrap-server localhost:9092
+
+   (Reading the key and value from topic)
+   PS C:\kafka> .\bin\windows\kafka-console-consumer.bat --topic topic_one --from-beginning --bootstrap-server localhost:9092 --property print.key=true
+
+NOTE: To consume the messages in order, we need to pass the same key with value. This will allow the consumer to consume the messages in order. 
