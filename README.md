@@ -59,4 +59,18 @@ broker and followers brokers are used for 'in-sync' replica of the messages to p
    (Reading the key and value from topic)
    PS C:\kafka> .\bin\windows\kafka-console-consumer.bat --topic topic_one --from-beginning --bootstrap-server localhost:9092 --property print.key=true
 
-NOTE: To consume the messages in order, we need to pass the same key with value. This will allow the consumer to consume the messages in order. 
+NOTE: To consume the messages in order, we need to pass the same key with value from Kafka Producer. This will allow the consumer to consume the messages in order. 
+
+==================================================================================
+
+Create the topic using Kafka Configuration file and push the topic to bootstrap server. 
+
+12. Create a class with @Configuration annotation. Create a method with @Bean annotation which will generate the topic using TopicBuilder to create the topic.
+
+@Configuration
+public class KafkaConfig {
+    @Bean
+    public NewTopic createTopic(){
+        return TopicBuilder.name("Product-created-event-topic").build();
+    }
+}
