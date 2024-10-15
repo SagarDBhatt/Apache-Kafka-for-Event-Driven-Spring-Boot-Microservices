@@ -6,4 +6,40 @@
   <version>1.0-SNAPSHOT</version>
   <name>Archetype - ApacheKafkaEvent-Driven</name>
   <url>http://maven.apache.org</url>
+
+  <repositories>
+    <repository>
+      <id>server_id</id>
+      <url>https://artifactory-pd-infra.aks.aze1.cloud.geico.net/artifactory/svoc-maven-all</url>
+    </repository>
+  </repositories>
+
+  <pluginRepositories>
+    <pluginRepository>
+      <id>server_id</id>
+      <url>https://artifactory-pd-infra.aks.aze1.cloud.geico.net/artifactory/svoc-maven-all</url>
+    </pluginRepository>
+  </pluginRepositories>
+
+  <dependencies>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-web</artifactId>
+      <version>3.2.4</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.springframework.kafka</groupId>
+      <artifactId>spring-kafka</artifactId>
+      <version>3.2.4</version>
+      <exclusions>
+        <exclusion>
+          <groupId>org.slf4j</groupId>
+          <artifactId>slf4j-api</artifactId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+  </dependencies>
+
 </project>
+
