@@ -74,3 +74,21 @@ public class KafkaConfig {
         return TopicBuilder.name("Product-created-event-topic").build();
     }
 }
+
+13. Provide the Kafka bootstrap server details in the application.properties file along with the producer key serializer and value de-serializer. 
+
+spring.kafka.producer.bootstrap-server=[::1]:9092
+spring.kafka.producer.key-serializer=org.apache.kafka.common.serialization.StringDeserializer
+spring.kafka.producer.value-serializer=org.springframework.kafka.support.serializer.JsonDeserializer 
+
+14. Validate if the topic is successfully registered with the Kafka bootstrap server by using below command in the CLI. 
+
+Start the Kafka bootstrap server:
+    C:\kafka> .\bin\windows\kafka-server-start.bat .\config\kraft\server.properties 
+
+List all the topics attached to this Kafka bootstrap server:
+    C:\kafka> .\bin\windows\kafka-topics.bat --list --bootstrap-server localhost:9092
+    Picked up JAVA_TOOL_OPTIONS: -Djavax.net.ssl.trustStoreType=Windows-ROOT
+    Product-created-event-topic
+
+This should list all the topics that are registered to Kafka bootstrap server. 
